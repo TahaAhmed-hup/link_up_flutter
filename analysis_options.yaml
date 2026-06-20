@@ -1,0 +1,12 @@
+analyzer:
+  errors:
+    deprecated_member_use: ignore
+    avoid_print: ignore
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_declarations: true
+    unnecessary_const: true
