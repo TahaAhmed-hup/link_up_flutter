@@ -56,10 +56,8 @@ class ChangePasswordController extends GetxController {
       if (user == null) {
         throw Exception('No user is currently signed in.');
       }
-      
+
       await user.updatePassword(newPasswordController.text);
-
-
 
       Get.snackbar(
         'Success',
@@ -72,7 +70,6 @@ class ChangePasswordController extends GetxController {
       currentPasswordController.clear();
       newPasswordController.clear();
       confirmPasswordController.clear();
-
     } on FirebaseAuthException catch (e) {
       String errorMessage;
       switch (e.code) {
@@ -94,10 +91,10 @@ class ChangePasswordController extends GetxController {
         colorText: Colors.red,
         duration: const Duration(seconds: 4),
       );
-    } catch (e){
+    } catch (e) {
       _error.value = 'Failed to change password.';
       print(e.toString());
-     Get.snackbar(
+      Get.snackbar(
         'Error',
         _error.value,
         backgroundColor: Colors.red.withOpacity(0.1),
@@ -107,7 +104,6 @@ class ChangePasswordController extends GetxController {
     } finally {
       _isLoading.value = false;
     }
-
   }
 
   String? validateCurrentPassword(String? value) {
@@ -116,7 +112,7 @@ class ChangePasswordController extends GetxController {
     }
     return null;
   }
-  
+
   String? validateNewPassword(String? value) {
     if (value?.isEmpty ?? true) {
       return 'Please enter your new password.';
@@ -124,24 +120,23 @@ class ChangePasswordController extends GetxController {
     if (value!.length < 6) {
       return 'New password should be at least 6 characters.';
     }
-    if(value == currentPasswordController.text){
+    if (value == currentPasswordController.text) {
       return 'New password must be different from current password.';
     }
     return null;
   }
+
   String? validateConfirmPassword(String? value) {
     if (value?.isEmpty ?? true) {
       return 'Please confirm your new password.';
     }
-    if(value != newPasswordController.text){
+    if (value != newPasswordController.text) {
       return 'Password Does not Match';
     }
     return null;
   }
 
-
-
-  void clearError(){
+  void clearError() {
     _error.value = '';
   }
 }
