@@ -130,7 +130,7 @@ class HomeController extends GetxController {
 
   List<ChatModel> _applyRecentFilter(List<ChatModel> chats) {
     final now = DateTime.now();
-    final threeDaysAgo = now.subtract(Duration(days: 3));
+    final threeDaysAgo = now.subtract(const Duration(days: 3));
     return chats.where((chat) {
       if (chat.lastMessageTime == null) return false;
       return chat.lastMessageTime!.isAfter(threeDaysAgo);
@@ -139,7 +139,7 @@ class HomeController extends GetxController {
 
   List<ChatModel> _applyActiveFilter(List<ChatModel> chats) {
     final now = DateTime.now();
-    final oneWeekAgo = now.subtract(Duration(days: 7));
+    final oneWeekAgo = now.subtract(const Duration(days: 7));
     return chats.where((chat) {
       if (chat.lastMessageTime == null) return false;
       return chat.lastMessageTime!.isAfter(oneWeekAgo);
@@ -180,10 +180,11 @@ class HomeController extends GetxController {
       if (otherUser == null) return false;
 
       final displayNameMatch =
+          // ignore: dead_code
           otherUser.displayName.toLowerCase().contains(lowerCaseQuery) ?? false;
 
       final emailMatch =
-          otherUser.email?.toLowerCase().contains(lowerCaseQuery) ?? false;
+          otherUser.email.toLowerCase().contains(lowerCaseQuery) ?? false;
 
       final lastMessageMatch =
           chat.lastMessage?.toLowerCase().contains(lowerCaseQuery) ?? false;
@@ -337,18 +338,18 @@ class HomeController extends GetxController {
 
       final result = await Get.dialog<bool>(
         AlertDialog(
-          title: Text('Delete Chat'),
+          title: const Text('Delete Chat'),
           content: Text(
             'Are you sure you want to delete the chat with ${otherUser?.displayName}? This action cannot be undone.',
           ),
           actions: [
             TextButton(
               onPressed: () => Get.back(result: false),
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             ElevatedButton(
               onPressed: () => Get.back(result: true),
-              child: Text('Delete', style: TextStyle(color: Colors.red)),
+              child: const Text('Delete', style: TextStyle(color: Colors.red)),
             ),
           ],
         ),
