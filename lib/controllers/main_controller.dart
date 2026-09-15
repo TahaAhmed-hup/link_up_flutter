@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:link_up/controllers/home_controller.dart';
 import 'package:link_up/controllers/profile_controller.dart';
 
 import 'friends_contoller.dart';
@@ -16,7 +17,7 @@ class MainController extends GetxController {
     super.onInit();
 
     // Init all required controllers
-    // Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => HomeController());
     Get.lazyPut(() => FriendsController());
     Get.lazyPut(() => UserListController());
     Get.lazyPut(() => ProfileController());
@@ -43,10 +44,8 @@ class MainController extends GetxController {
 
   int getUnreadCount() {
     try {
-      // final homeController = Get.find<HomeController>();
-      // return homeController.getTotalUnreadCount();
-
-      return 5;
+      final homeController = Get.find<HomeController>();
+      return homeController.getTotalUnreadCount();
     } catch (e) {
       return 0;
     }
@@ -54,10 +53,8 @@ class MainController extends GetxController {
 
   int getNotificationCount() {
     try {
-      // final homeController = Get.find<HomeController>();
-      // return homeController.getUnreadNotificationsCount();
-
-      return 7;
+      final homeController = Get.find<HomeController>();
+      return homeController.getUnreadNotificationsCount();
     } catch (e) {
       return 0;
     }
