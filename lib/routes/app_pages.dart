@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:link_up/controllers/home_controller.dart';
 import 'package:link_up/routes/app_routes.dart';
 import 'package:link_up/screens/find_people_screen.dart';
+import 'package:link_up/screens/home_screen.dart';
 
 import '../controllers/friend_requests_controller.dart';
 import '../controllers/friends_contoller.dart';
@@ -25,13 +27,13 @@ class AppPages {
     GetPage(name: AppRoutes.login, page: () => const LoginScreen()),
     GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
 
-    // GetPage(
-    //   name: AppRoutes.home,
-    //   page: () => const HomeScreen(),
-    //   binding: BindingsBuilder(() {
-    //     Get.put(HomeController());
-    //   }),
-    // ),
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomeScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(HomeController());
+      }),
+    ),
     GetPage(
       name: AppRoutes.main,
       page: () => const MainScreen(),
