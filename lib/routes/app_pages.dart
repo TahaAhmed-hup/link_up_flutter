@@ -3,10 +3,12 @@ import 'package:link_up/controllers/home_controller.dart';
 import 'package:link_up/routes/app_routes.dart';
 import 'package:link_up/screens/find_people_screen.dart';
 import 'package:link_up/screens/home_screen.dart';
+import 'package:link_up/screens/notification_screen.dart';
 
 import '../controllers/friend_requests_controller.dart';
 import '../controllers/friends_contoller.dart';
 import '../controllers/main_controller.dart';
+import '../controllers/notification_controller.dart';
 import '../controllers/profile_controller.dart';
 import '../controllers/user_list_controller.dart';
 import '../screens/auth/forgot_password_screen.dart';
@@ -85,12 +87,12 @@ class AppPages {
         Get.put(FriendRequestsController());
       }),
     ),
-    // GetPage(
-    //   name: AppRoutes.notifications,
-    //   page: () => const NotificationsScreen(),
-    //   binding: BindingsBuilder(() {
-    //     Get.put(NotificationsController());
-    //   }),
-    // ),
+    GetPage(
+      name: AppRoutes.notifications,
+      page: () => const NotificationScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(NotificationController());
+      }),
+    ),
   ];
 }

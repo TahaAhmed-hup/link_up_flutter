@@ -180,7 +180,6 @@ class HomeController extends GetxController {
       if (otherUser == null) return false;
 
       final displayNameMatch =
-          // ignore: dead_code
           otherUser.displayName.toLowerCase().contains(lowerCaseQuery) ?? false;
 
       final emailMatch =
@@ -373,6 +372,7 @@ class HomeController extends GetxController {
   }
 
   @override
+  // ignore: unnecessary_overrides
   void onClose() {
     super.onClose();
   }
